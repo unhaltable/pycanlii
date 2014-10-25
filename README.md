@@ -14,7 +14,7 @@ Install the package from PyPI:
 ```python
 from pycanlii import CanLII
 
-canlii = CanLII(api_key='gHuBwvVx2VguA6meMfuXHGmy', language='en')
+canlii = CanLII('gHuBwvVx2VguA6meMfuXHGmy', language='en')
 
 # Get the list of databases
 databases = canlii.legislation_databases()
