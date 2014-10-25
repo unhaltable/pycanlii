@@ -39,5 +39,5 @@ if __name__ == '__main__':
     x = PyCanliiBase(os.environ["CANLII_KEY"])
     #y = x.request("http://api.canlii.org/v1/legislationBrowse", True)
     #print(y.json())
-    y = x.request("http://api.canlii.org/v1/legislationBrowse", True, 'cas')
-    print(y)
+    y = x.request("http://api.canlii.org/v1/legislationBrowse", True)
+    print(y.json()['legislationDatabases'])
