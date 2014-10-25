@@ -3,7 +3,7 @@ from enum import Enum
 
 class LegislationType(Enum):
     Regulation = 0
-    Statue = 1
+    Statute = 1
 
 class LegislationJurisdiction(Enum):
     ca = 0
