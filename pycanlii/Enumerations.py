@@ -17,11 +17,13 @@ class LegislationJurisdiction(Enum):
     pe = 9
     qc = 10
     sk = 11
-    yt = 12
+    yk = 12
+    bc = 13
 
 class Language(Enum):
     fr = 0
     en = 1 # because english is greater than french
+
 
 class DataScheme(Enum):
     ENTRY_INTO_FORCE = 0
@@ -30,5 +32,3 @@ class DataScheme(Enum):
 class Repealed(Enum):
     no = False
     yes = True
-
-
