@@ -4,7 +4,7 @@ import os
 
 class LegislationDatabase(base.PyCanliiBase):
 
-    def __init__(self, data, apikey, language="en"):
+    def __init__(self, data, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)
         self.name = data['name']
 
@@ -27,8 +27,9 @@ class LegislationDatabase(base.PyCanliiBase):
 
 class Legislation(base.PyCanliiBase):
 
-    def __init__(self, apikey, language="en"):
+    def __init__(self, apikey, language=enums.Language.en, **data):
         base.PyCanliiBase.__init__(self, apikey, language)
+
 
 
 if __name__ == '__main__':

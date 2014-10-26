@@ -1,6 +1,5 @@
 from enum import Enum
 
-
 class LegislationType(Enum):
     Regulation = 0
     Statute = 1

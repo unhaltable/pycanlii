@@ -3,10 +3,11 @@ __author__ = 'jonathanwebb'
 import pycanlii.pycanliibase as base
 from pycanlii.legislation import LegislationDatabase
 import os
+import pycanlii.enumerations as enums
 
 class CanLII(base.PyCanliiBase):
 
-    def __init__(self, apikey, language="en"):
+    def __init__(self, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)
 
     def legislation_databases(self):

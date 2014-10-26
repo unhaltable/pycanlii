@@ -1,12 +1,10 @@
-__author__ = 'ur mom'
-
 import requests
 import json
 import os
 
 class PyCanliiBase:
 
-    def __init__(self, apikey, language="en"):
+    def __init__(self, apikey, language):
         self.key = apikey
         self.lang = language
 
