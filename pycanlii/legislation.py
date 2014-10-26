@@ -1,5 +1,6 @@
 import pycanlii.pycanliibase as base
 import pycanlii.enumerations as enums
+import pycanlii.helpers
 import os
 
 class LegislationDatabase(base.PyCanliiBase):
@@ -18,12 +19,25 @@ class LegislationDatabase(base.PyCanliiBase):
 
         self.id = data["databaseId"]
         #still need to add jurisdiction although for basic functionality, strictly speaking, not required
-        self.jurisdiction = ""
+        self.jurisdiction = pycanlii.helpers.getJurisdiction(data['jurisdiction'])
         self.legislation = []
+        self._populated = False
 
     #nyi
     def _getLegislation(self):
         legis = self._request("http://api.canlii.org/v1/legislationBrowse", False, self.id)
+
+    def __iter__(self):
+        if not self._populated:
+            self._getLegislation()
+            self._populated = True
+        return self.legislation.__iter__()
+
+    def __getitem__(self, item):
+        if not self._populated:
+            self._getLegislation()
+            self._populated = True
+        return self.legislation[item]
 
 class Legislation(base.PyCanliiBase):
 
