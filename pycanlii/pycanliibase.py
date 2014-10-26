@@ -9,7 +9,7 @@ class PyCanliiBase:
         self.lang = language
 
 
-    def request(self, url, authenticated, *url_variables, **query_parameters):
+    def _request(self, url, authenticated, *url_variables, **query_parameters):
         '''
         Sends a request to the input url, with the url parameters
         place in order with a / between each and with the
@@ -37,5 +37,5 @@ if __name__ == '__main__':
     x = PyCanliiBase(os.environ["CANLII_KEY"])
     #y = x.request("http://api.canlii.org/v1/legislationBrowse", True)
     #print(y.json())
-    y = x.request("http://api.canlii.org/v1/legislationBrowse", True)
+    y = x._request("http://api.canlii.org/v1/legislationBrowse", True)
     print(y.json()['legislationDatabases'])

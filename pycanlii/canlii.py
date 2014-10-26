@@ -11,7 +11,11 @@ class CanLII(base.PyCanliiBase):
         base.PyCanliiBase.__init__(self, apikey, language)
 
     def legislation_databases(self):
-        l = self.request("http://api.canlii.org/v1/legislationBrowse", True)
+        '''
+        Returns a list of LegislationDatabase objects, each representing a legislation database on CanLII
+        :return: A list of LegislationDatabase objects
+        '''
+        l = self._request("http://api.canlii.org/v1/legislationBrowse", True)
         ret = []
         dbs = l.json()['legislationDatabases']
         for db in dbs:

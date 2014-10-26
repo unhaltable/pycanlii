@@ -23,7 +23,7 @@ class LegislationDatabase(base.PyCanliiBase):
 
     #nyi
     def _getLegislation(self):
-        legis = self.request("http://api.canlii.org/v1/legislationBrowse", False, self.id)
+        legis = self._request("http://api.canlii.org/v1/legislationBrowse", False, self.id)
 
 class Legislation(base.PyCanliiBase):
 
