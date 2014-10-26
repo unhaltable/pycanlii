@@ -24,7 +24,7 @@ class PyCanliiBase:
         if authenticated:
             query_parameters['api_key'] = self.key
 
-        url += "/" + self.lang
+        url += "/" + self.lang.name
         for var in url_variables:
             url += "/" + var
 
