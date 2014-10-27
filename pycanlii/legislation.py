@@ -53,13 +53,14 @@ class Legislation(base.PyCanliiBase):
         self.title = data['title']
         self.citation = data['citation']
 
-        self.populated = False
-        self.url = ''
-
-
-
-
-
+        self._populated = False
+        self._url = None
+        self._title = None
+        self._citation = None
+        self._dataScheme = None
+        self._startDate = None
+        self._endDate = None
+        self._repealed = None
 
         if (data['type'] == "REGULATION"):
             self.type = enums.LegislationType.Regulation
@@ -73,7 +74,16 @@ class Legislation(base.PyCanliiBase):
     def _populate(self):
         legis = self._request("http://api.canlii.org/v1/legislationBrowse", True, self.databaseId, self.legislationId)
         legis = legis.json()
-
+        self._url = legis['url']
+        self._title = legis['title']
+        self._dataScheme = enums.DataScheme.__members__[legis['dataScheme']]
+        self._startDate = legis['startDate']
+        self._endDate = legis['endDate']
+        
+        if (legis['repealed']  == 'NO'):
+            self._repealed = False
+        else:
+            self._repealed = True
 
 
 

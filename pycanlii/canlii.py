@@ -9,6 +9,7 @@ class CanLII(base.PyCanliiBase):
 
     def __init__(self, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)
+        self._db = None
 
     def legislation_databases(self):
         '''
@@ -16,12 +17,13 @@ class CanLII(base.PyCanliiBase):
         :return: A list of LegislationDatabase objects
         '''
         l = self._request("http://api.canlii.org/v1/legislationBrowse", True)
-        ret = []
+        self._db = []
         dbs = l.json()['legislationDatabases']
         for db in dbs:
-            ret.append(LegislationDatabase(db, self.key, self.lang))
+            self._db.append(LegislationDatabase(db, self.key, self.lang))
 
-        return ret
+
+        return self._db
 
 
 if __name__ == '__main__':
