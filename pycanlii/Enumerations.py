@@ -28,7 +28,3 @@ class Language(Enum):
 class DataScheme(Enum):
     ENTRY_INTO_FORCE = 0
     DOWNLOAD_DATE = 1
-
-class Repealed(Enum):
-    no = False
-    yes = True

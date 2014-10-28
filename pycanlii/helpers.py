@@ -1,4 +1,4 @@
-import pycanlii.enumerations as enums
+import pycanlii.Enumerations as enums
 
 
 def getJurisdiction(location_code):

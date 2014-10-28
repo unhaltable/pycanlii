@@ -3,7 +3,7 @@ __author__ = 'jonathanwebb'
 import pycanlii.pycanliibase as base
 from pycanlii.legislation import LegislationDatabase
 import os
-import pycanlii.enumerations as enums
+import pycanlii.Enumerations as enums
 
 class CanLII(base.PyCanliiBase):
 

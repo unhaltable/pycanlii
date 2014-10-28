@@ -19,3 +19,12 @@ canlii = CanLII('gHuBwvVx2VguA6meMfuXHGmy', language='en')
 # Get the list of databases
 databases = canlii.legislation_databases()
 ```
+
+## Status
+
+Component | Status
+----------|--------
+legislationBrowse | Working
+caseBrowse | NYI
+Search | NYI
+caseCitatorTease| NYI

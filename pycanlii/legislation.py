@@ -1,5 +1,5 @@
 import pycanlii.pycanliibase as base
-import pycanlii.enumerations as enums
+import pycanlii.Enumerations as enums
 import pycanlii.helpers
 from pycanlii.canlii import *
 import os
@@ -24,7 +24,6 @@ class LegislationDatabase(base.PyCanliiBase):
         self.legislation = []
         self._populated = False
 
-    #nyi
     def _getLegislation(self):
         legis = self._request("http://api.canlii.org/v1/legislationBrowse", True, self.id).json()['legislations']
         for legislation in legis:
