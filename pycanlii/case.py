@@ -23,7 +23,7 @@ class CaseDatabase(base.PyCanliiBase):
 
         self.index += extension
         if (len(cases) < extension):
-            self_full = False
+            self._full = False
 
         for case in cases:
             self._cases.append(Case(case, self._key, self._lang))
