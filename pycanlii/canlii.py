@@ -37,6 +37,15 @@ class CanLII(base.PyCanliiBase):
 
     #NYI
     def search(self, fullText, resultCount=100, offset=0):
+        '''
+        Returns upto the first 100 results of a search in CanLII. If you can potentially return more than 100 results
+        you're bad and you should feel bad. Put in a more precise search.
+        :param fullText: Your search query
+        :param resultCount: Some number less than 100. Okay?
+        :param offset: This can technically be anything, any positive integer anyways. I'd be wary of going
+        _too_ hard on this one
+        :return: A list of results
+        '''
         results = self._request("http://api.canlii.org/v1/search", True, fullText=fullText,
                                  resultCount=resultCount, offset=offset).json()
         results = results['results']
