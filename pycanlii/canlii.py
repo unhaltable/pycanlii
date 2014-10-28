@@ -2,7 +2,7 @@ import pycanlii.pycanliibase as base
 import pycanlii.legislation
 import pycanlii.case
 import os
-import pycanlii.Enumerations as enums
+import pycanlii.enumerations as enums
 
 class CanLII(base.PyCanliiBase):
 

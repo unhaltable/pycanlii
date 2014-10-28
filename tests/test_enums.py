@@ -1,4 +1,4 @@
-import pycanlii.Enumerations as enums
+import pycanlii.enumerations as enums
 
 
 class TestEnums(object):

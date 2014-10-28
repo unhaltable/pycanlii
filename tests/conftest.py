@@ -1,7 +1,7 @@
 import pytest
 import os
 
-import pycanlii.Enumerations
+import pycanlii.enumerations
 from pycanlii.canlii import CanLII
 
 @pytest.fixture
@@ -16,5 +16,5 @@ def config():
 
 @pytest.fixture
 def canlii(config):
-    return CanLII(config['key'], pycanlii.Enumerations.Language.en)
+    return CanLII(config['key'], pycanlii.enumerations.Language.en)
 
