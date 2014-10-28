@@ -30,7 +30,7 @@ class LegislationDatabase(base.PyCanliiBase):
     def _getLegislation(self):
         legis = self._request("http://api.canlii.org/v1/legislationBrowse", True, self.id).json()['legislations']
         for legislation in legis:
-            self.legislation.append(Legislation(legislation, self.key, self.lang))
+            self.legislation.append(Legislation(legislation, self._key, self._lang))
 
 
     def __iter__(self):

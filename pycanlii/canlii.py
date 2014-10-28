@@ -21,7 +21,7 @@ class CanLII(base.PyCanliiBase):
         self._db = []
         dbs = l.json()['legislationDatabases']
         for db in dbs:
-            self._db.append(pycanlii.legislation.LegislationDatabase(db, self.key, self.lang))
+            self._db.append(pycanlii.legislation.LegislationDatabase(db, self._key, self._lang))
 
         return self._db
 
@@ -31,7 +31,7 @@ class CanLII(base.PyCanliiBase):
         casedb = []
         dbs = l.json()['caseDatabases']
         for db in dbs:
-            casedb.append(pycanlii.case.CaseDatabase(db, self.key, self.lang))
+            casedb.append(pycanlii.case.CaseDatabase(db, self._key, self._lang))
 
         return casedb
 
@@ -52,9 +52,9 @@ class CanLII(base.PyCanliiBase):
         l = []
         for result in results:
             if 'legislation' in result:
-                l.append(pycanlii.legislation.Legislation(result['legislation'], self.key, self.lang))
+                l.append(pycanlii.legislation.Legislation(result['legislation'], self._key, self._lang))
             else:
-                l.append(pycanlii.case.Case(result['case'], self.key, self.lang))
+                l.append(pycanlii.case.Case(result['case'], self._key, self._lang))
         return l
 
 

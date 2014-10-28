@@ -13,6 +13,7 @@ def config():
     except KeyError as err:
         raise Exception('You must set the environment variable {}'.format(err.args[0]))
 
+
 @pytest.fixture
 def canlii(config):
     return CanLII(config['key'], pycanlii.Enumerations.Language.en)

@@ -27,7 +27,7 @@ class CaseDatabase(base.PyCanliiBase):
             self_full = False
 
         for case in cases:
-            self.cases.append(Case(case, self.key, self.lang))
+            self.cases.append(Case(case, self._key, self._lang))
 
 
     def __iter__(self):
@@ -45,7 +45,7 @@ class Case(base.PyCanliiBase):
     def __init__(self, data, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)
         self.databaseId = data['databaseId']
-        self.caseId = data['caseId'][self.lang.name]
+        self.caseId = data['caseId'][self._lang.name]
         self.title = data['title']
         self.citation = data['citation']
 

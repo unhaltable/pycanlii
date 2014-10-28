@@ -3,8 +3,8 @@ import requests
 class PyCanliiBase(object):
 
     def __init__(self, apikey, language):
-        self.key = apikey
-        self.lang = language
+        self._key = apikey
+        self._lang = language
 
     def _request(self, url, authenticated, *url_variables, **query_parameters):
         '''
@@ -19,9 +19,9 @@ class PyCanliiBase(object):
         :return:
         '''
         if authenticated:
-            query_parameters['api_key'] = self.key
+            query_parameters['api_key'] = self._key
 
-        url += "/" + self.lang.name
+        url += "/" + self._lang.name
         for var in url_variables:
             url += "/" + var
 
