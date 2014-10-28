@@ -1,6 +1,5 @@
 import pycanlii.pycanliibase as base
 import pycanlii.Enumerations as enums
-import pycanlii.helpers
 import requests
 from bs4 import BeautifulSoup
 from pycanlii.canlii import *
@@ -13,7 +12,7 @@ class CaseDatabase(base.PyCanliiBase):
 
         self.id = data["databaseId"]
         #still need to add jurisdiction although for basic functionality, strictly speaking, not required
-        self.jurisdiction = pycanlii.helpers.getJurisdiction(data['jurisdiction'])
+        self.jurisdiction = enums.LegislationJurisdiction.getMember(data['jurisdiction'])
         self.cases = []
         self.index = 0
         self._full = False

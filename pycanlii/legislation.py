@@ -1,6 +1,5 @@
 import pycanlii.pycanliibase as base
 import pycanlii.Enumerations as enums
-import pycanlii.helpers
 from pycanlii.canlii import *
 import requests
 from bs4 import BeautifulSoup
@@ -23,7 +22,7 @@ class LegislationDatabase(base.PyCanliiBase):
 
         self.id = data["databaseId"]
         #still need to add jurisdiction although for basic functionality, strictly speaking, not required
-        self.jurisdiction = pycanlii.helpers.getJurisdiction(data['jurisdiction'])
+        self.jurisdiction = enums.LegislationJurisdiction.getMember(data['jurisdiction'])
         self.legislation = []
         self._populated = False
 
@@ -69,6 +68,7 @@ class Legislation(base.PyCanliiBase):
 
         if (data['type'] == "REGULATION"):
             self.type = enums.LegislationType.Regulation
+            self.type = enums.LegislationType.Regulation
         elif (data['type'] == "STATUTE"):
             self.type = enums.LegislationType.Statute
         else:
@@ -81,7 +81,7 @@ class Legislation(base.PyCanliiBase):
         legis = legis.json()
         self._url = legis['url']
         self._title = legis['title']
-        self._dateScheme = enums.DateScheme.__members__[legis['dateScheme']]
+        self._dateScheme = enums.DateScheme.getMember(legis['dateScheme'])
         self._startDate = legis['startDate']
         self._endDate = legis['endDate']
         
