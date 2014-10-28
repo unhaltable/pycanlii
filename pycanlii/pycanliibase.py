@@ -1,13 +1,10 @@
 import requests
-import json
-import os
 
 class PyCanliiBase(object):
 
     def __init__(self, apikey, language):
         self.key = apikey
         self.lang = language
-
 
     def _request(self, url, authenticated, *url_variables, **query_parameters):
         '''
@@ -32,10 +29,3 @@ class PyCanliiBase(object):
             return requests.get(url, params=query_parameters)
         else:
             return requests.get(url)
-
-if __name__ == '__main__':
-    x = PyCanliiBase(os.environ["CANLII_KEY"])
-    #y = x.request("http://api.canlii.org/v1/legislationBrowse", True)
-    #print(y.json())
-    y = x._request("http://api.canlii.org/v1/legislationBrowse", True)
-    print(y.json()['legislationDatabases'])
