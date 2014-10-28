@@ -16,8 +16,11 @@ from pycanlii import CanLII
 
 canlii = CanLII('gHuBwvVx2VguA6meMfuXHGmy', language='en')
 
-# Get the list of databases
+# Get the list of legislation databases
 databases = canlii.legislation_databases()
+
+# Get the list of case databases
+databases = canlii.cases_databases()
 ```
 
 ## Development Progress
