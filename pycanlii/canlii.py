@@ -1,5 +1,3 @@
-__author__ = 'jonathanwebb'
-
 import pycanlii.pycanliibase as base
 import pycanlii.legislation
 import pycanlii.case
