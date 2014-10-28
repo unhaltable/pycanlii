@@ -1,4 +1,4 @@
-pycanlii
+pycanlii [![Travis CI][travis-badge]][travis]
 ========
 
 Python API Wrapper for CanLII
@@ -33,3 +33,7 @@ legislationBrowse | Working
 caseBrowse | Working
 Search | NYI
 caseCitatorTease| NYI
+
+
+[travis-badge]:    http://img.shields.io/travis/sherlocke/pycanlii.svg?style=flat
+[travis]:          https://travis-ci.org/sherlocke/pycanlii
