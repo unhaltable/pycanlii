@@ -8,7 +8,7 @@ class TestEnums(object):
         assert enums.LegislationJurisdiction.ca == enums.LegislationJurisdiction.ca
 
         #Tests if you can get the name of the enum
-        assert enums.Language.en == 'en'
+        assert enums.Language.en.name == 'en'
 
         #Tests if the __members__ variable exists
         assert enums.DateScheme.__members__['DOWNLOAD_DATE'] == enums.DateScheme.DOWNLOAD_DATE
