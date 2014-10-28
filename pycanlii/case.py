@@ -69,7 +69,7 @@ class Case(base.PyCanliiBase):
         self._docketNumber = case['docketNumber']
         self._decisionDate = case['decisionDate']
 
-        self._populate = True
+        self._populated = True
 
     def getContent(self):
         if not self._populated:
