@@ -1,17 +1,8 @@
 language: python
 python:
-    - "3.4"
-    - "3.3"
-    - "3.2"
-    - "3.1"
-    - "3.0"
-    - "2.7.8"
-    - "2.7.7"
-    - "2.7.6"
-script: py.test
-pip install -r requirements.txt
+  - '2.7'
+  - '3.4'
 script: py.test
 notifications:
   slack:
     secure: WTYM3sJEjAfq1YXENcXbCEA3Z9792c+H1DH1UosmMdsG8hqvEiEKiVgkT3LGKFHPKAKSVVDhKlBF/wi1rD7Z77l+eZL0ZQbyYxz2Kyk73h/FHZZR9/kH0e55xSqkQ1hEzNWe014EszvWiDqpWECRO1pZapxL+k/E/kpYKX8msRE=
-

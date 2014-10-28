@@ -1,4 +1,4 @@
-pycanlii [![Travis CI][travis-badge]][travis]
+pycanlii [![Travis CI][travis-badge]][travis] [![Code Health][landscape-badge]][landscape]
 ========
 
 Python API Wrapper for CanLII
@@ -37,3 +37,5 @@ caseCitatorTease| NYI
 
 [travis-badge]:    http://img.shields.io/travis/sherlocke/pycanlii.svg?style=flat
 [travis]:          https://travis-ci.org/sherlocke/pycanlii
+[landscape-badge]: https://landscape.io/github/sherlocke/pycanlii/master/landscape.png?style=flat
+[landscape]:       https://landscape.io/github/sherlocke/pycanlii/master
