@@ -11,9 +11,9 @@ class CaseDatabase(base.PyCanliiBase):
         self.name = data['name']
 
         self.id = data["databaseId"]
-        #still need to add jurisdiction although for basic functionality, strictly speaking, not required
-        self.jurisdiction = enums.LegislationJurisdiction.getMember(data['jurisdiction'])
-        self.cases = []
+        # still need to add jurisdiction although for basic functionality, strictly speaking, not required
+        self.jurisdiction = enums.LegislationJurisdiction[data['jurisdiction']]
+        self._cases = []
         self.index = 0
         self._full = False
 
@@ -26,18 +26,18 @@ class CaseDatabase(base.PyCanliiBase):
             self_full = False
 
         for case in cases:
-            self.cases.append(Case(case, self._key, self._lang))
+            self._cases.append(Case(case, self._key, self._lang))
 
 
     def __iter__(self):
         while(not self._full):
             self._getCases()
-        return self.cases.__iter__()
+        return self._cases.__iter__()
 
     def __getitem__(self, item):
         while(self.index <= item):
             self._getCases()
-        return self.cases[item]
+        return self._cases[item]
 
 class Case(base.PyCanliiBase):
 
