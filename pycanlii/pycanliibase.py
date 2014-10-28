@@ -2,7 +2,7 @@ import requests
 import json
 import os
 
-class PyCanliiBase:
+class PyCanliiBase(object):
 
     def __init__(self, apikey, language):
         self.key = apikey
