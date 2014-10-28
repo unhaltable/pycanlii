@@ -24,7 +24,6 @@ class Language(Enum):
     fr = 0
     en = 1 # because english is greater than french
 
-
 class DataScheme(Enum):
     ENTRY_INTO_FORCE = 0
     DOWNLOAD_DATE = 1

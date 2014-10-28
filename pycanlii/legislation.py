@@ -84,6 +84,8 @@ class Legislation(base.PyCanliiBase):
         else:
             self._repealed = True
 
+        self._populate = True
+
 
 
 if __name__ == '__main__':
