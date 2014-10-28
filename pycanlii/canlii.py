@@ -2,6 +2,7 @@ __author__ = 'jonathanwebb'
 
 import pycanlii.pycanliibase as base
 from pycanlii.legislation import LegislationDatabase
+from pycanlii.case import CaseDatabase
 import os
 import pycanlii.Enumerations as enums
 
@@ -23,6 +24,16 @@ class CanLII(base.PyCanliiBase):
             self._db.append(LegislationDatabase(db, self.key, self.lang))
 
         return self._db
+
+
+    def case_databases(self):
+        l = self._request("http://api.canlii.org/v1/caseBrowse", True)
+        casedb = []
+        dbs = l.json()['caseDatabases']
+        for db in dbs:
+            casedb.append(CaseDatabase(db, self.key, self.lang))
+
+        return casedb
 
 
 if __name__ == '__main__':

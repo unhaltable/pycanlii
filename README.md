@@ -22,9 +22,11 @@ databases = canlii.legislation_databases()
 
 ## Development Progress
 
+
+
 Component | Status
 ----------|--------
 legislationBrowse | Working
-caseBrowse | NYI
+caseBrowse | Working
 Search | NYI
 caseCitatorTease| NYI
