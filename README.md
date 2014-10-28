@@ -20,7 +20,7 @@ canlii = CanLII('gHuBwvVx2VguA6meMfuXHGmy', language='en')
 databases = canlii.legislation_databases()
 
 # Get the list of case databases
-databases = canlii.cases_databases()
+cases = canlii.cases_databases()
 ```
 
 ## Development Progress

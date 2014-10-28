@@ -25,7 +25,7 @@ class PyCanliiBase(object):
         for var in url_variables:
             url += "/" + var
 
-        if (len(query_parameters)):
+        if len(query_parameters):
             return requests.get(url, params=query_parameters)
         else:
             return requests.get(url)
