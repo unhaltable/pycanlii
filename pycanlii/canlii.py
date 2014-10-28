@@ -35,6 +35,12 @@ class CanLII(base.PyCanliiBase):
 
         return casedb
 
+    #NYI
+    def search(self, fullText, resultCount=100, offset=0):
+        results = self._requests("http://api.canlii.org/v1/search", True, fullText=fullText,
+                                 resultCount=resultCount, offset=offset).json()
+
+
 
 if __name__ == '__main__':
     x = CanLII(os.environ["CANLII_KEY"])
