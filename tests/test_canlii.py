@@ -12,7 +12,7 @@ class TestCanLII:
 
         canlii_fr = CanLII(config['key'], Language.fr)
         assert canlii_fr._key == config['key']
-        assert canlii_fr._lang == Language.en
+        assert canlii_fr._lang == Language.fr
 
     def test_legis_db(self, canlii):
         legislation = canlii.legislation_databases()
