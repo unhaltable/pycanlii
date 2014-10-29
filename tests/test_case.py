@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from pycanlii.case import Case
+from pycanlii.legislation import Legislation
 from pycanlii.enumerations import Language
 
 
@@ -24,4 +25,19 @@ class TestCase:
         assert fr._lang == Language.fr
 
     def test_getContent(self, case):
-        pass
+        assert type(case.getContent()) == BeautifulSoup
+
+    def test_citedCases(self, case):
+        c = case.citedCases()
+        for i in c:
+            assert type(i) == Case
+
+    def test_citingCases(self, case):
+        c = case.citingCases()
+        for i in c:
+            assert type(i) == Case
+
+    def test_citedLegislatio(self, case):
+        c = case.citedLegislation()
+        for i in c:
+            assert type(i) == Legislation
