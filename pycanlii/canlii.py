@@ -6,7 +6,7 @@ import pycanlii.enumerations as enums
 
 class CanLII(base.PyCanliiBase):
     """
-    This is the object to be used to interface with the CanLII API.
+    This is base the object used to interface with the CanLII API.
     """
 
     def __init__(self, apikey, language=enums.Language.en):
