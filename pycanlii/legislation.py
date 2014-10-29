@@ -3,8 +3,6 @@ import pycanlii.enumerations as enums
 import requests
 from bs4 import BeautifulSoup
 
-import os
-
 class LegislationDatabase(base.PyCanliiBase):
 
     def __init__(self, data, apikey, language=enums.Language.en):
