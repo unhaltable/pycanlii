@@ -2,6 +2,7 @@ import pycanlii.pycanliibase as base
 import pycanlii.Enumerations as enums
 import pycanlii.helpers
 from pycanlii.canlii import *
+import requests
 from bs4 import BeautifulSoup
 
 import os
@@ -63,6 +64,9 @@ class Legislation(base.PyCanliiBase):
         self._endDate = None
         self._repealed = None
 
+        #Used to store the content of the Legislation
+        self._content = None
+
         if (data['type'] == "REGULATION"):
             self.type = enums.LegislationType.Regulation
         elif (data['type'] == "STATUTE"):
@@ -92,7 +96,13 @@ class Legislation(base.PyCanliiBase):
         if not self._populated:
             self._populate()
 
-        req = self._request(self.url, False)
+        if not self._content:
+            req = requests.get(self._url)
+            self._content = BeautifulSoup(req.content).find(id='canliidocumentcontent')
+
+        return self._content
+
+
 
 
 
@@ -101,4 +111,6 @@ class Legislation(base.PyCanliiBase):
 if __name__ == '__main__':
     canlii = CanLII(os.environ["CANLII_KEY"])
     legislation = canlii.legislation_databases()
-    legislation[0][0].getContent()
+    con = legislation[0][0].getContent()
+    x = con.find(id='canliidocumentcontent')
+    print(x.prettify())
