@@ -9,7 +9,7 @@ from pycanlii.case import Case
 def config():
     try:
         return {
-            'key': os.environ['CANLII_URL'],
+            'key': os.environ['CANLII_KEY'],
         }
     except KeyError as err:
         raise Exception('You must set the environment variable {}'.format(err.args[0]))
@@ -38,3 +38,7 @@ def case_en(config):
         'citation' : '[2008] 1 SCR 190, 2008 SCC 9 (CanLII)'
     }
     return Case(data, config['key'], pycanlii.enumerations.Language.en)
+
+@pytest.fixture
+def case(case_en, config):
+    return Case(case_en, config['key'], pycanlii.enumerations.Language.en)

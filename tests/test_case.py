@@ -22,3 +22,6 @@ class TestCase:
         assert fr.citation == case_fr['citation']
         assert fr._key == config['key']
         assert fr._lang == Language.fr
+
+    def test_getContent(self, case):
+        pass
