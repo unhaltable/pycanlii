@@ -37,7 +37,7 @@ class TestCase:
         for i in c:
             assert type(i) == Case
 
-    def test_citedLegislatio(self, case):
+    def test_citedLegislation(self, case):
         c = case.citedLegislation()
         for i in c:
             assert type(i) == Legislation
