@@ -4,6 +4,7 @@ import os
 import pycanlii.enumerations
 from pycanlii.canlii import CanLII
 from pycanlii.case import Case
+from pycanlii.legislation import Legislation
 
 @pytest.fixture
 def config():
@@ -40,5 +41,23 @@ def case_en(config):
     return Case(data, config['key'], pycanlii.enumerations.Language.en)
 
 @pytest.fixture
-def case(case_en, config):
-    return Case(case_en, config['key'], pycanlii.enumerations.Language.en)
+def legis_en(config):
+    data = {
+      "databaseId": "car",
+      "legislationId": "sor-86-946",
+      "title": "Abatement of Duties Payable Regulations",
+      "citation": "SOR/86-946",
+      "type": "REGULATION"
+    }
+    return Legislation(data, config['key'], pycanlii.enumerations.Language.en)
+
+@pytest.fixture
+def legis_fr(config):
+    data = {
+      "databaseId": "car",
+      "legislationId": "dors-96-383",
+      "title": "Décret sur l\u0027abandon et la poursuite des procédures, 1996",
+      "citation": "DORS/96-383",
+      "type": "REGULATION"
+    }
+    return Legislation(data, config['key'], pycanlii.enumerations.Language.fr)

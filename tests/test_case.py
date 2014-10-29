@@ -24,20 +24,20 @@ class TestCase:
         assert fr._key == config['key']
         assert fr._lang == Language.fr
 
-    def test_getContent(self, case):
-        assert type(case.getContent()) == BeautifulSoup
+    def test_getContent(self, case_en):
+        assert type(case_en.getContent()) == BeautifulSoup
 
-    def test_citedCases(self, case):
-        c = case.citedCases()
+    def test_citedCases(self, case_en):
+        c = case_en.citedCases()
         for i in c:
             assert type(i) == Case
 
-    def test_citingCases(self, case):
-        c = case.citingCases()
+    def test_citingCases(self, case_en):
+        c = case_en.citingCases()
         for i in c:
             assert type(i) == Case
 
-    def test_citedLegislation(self, case):
-        c = case.citedLegislation()
+    def test_citedLegislation(self, case_en):
+        c = case_en.citedLegislation()
         for i in c:
             assert type(i) == Legislation
