@@ -54,7 +54,7 @@ class Case(base.PyCanliiBase):
         self._docketNumber = None
         self._decisionDate = None
 
-        #Used to store the content of the case
+        # Used to store the content of the case
         self._content = None
 
 

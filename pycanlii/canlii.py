@@ -11,10 +11,10 @@ class CanLII(base.PyCanliiBase):
         self._db = None
 
     def legislation_databases(self):
-        '''
+        """
         Returns a list of LegislationDatabase objects, each representing a legislation database on CanLII
         :return: A list of LegislationDatabase objects
-        '''
+        """
         l = self._request("http://api.canlii.org/v1/legislationBrowse", True)
         self._db = []
         dbs = l.json()['legislationDatabases']
@@ -58,7 +58,7 @@ class CanLII(base.PyCanliiBase):
 
 if __name__ == '__main__':
     x = CanLII(os.environ["CANLII_KEY"])
-    #y = x.request("http://api.canlii.org/v1/legislationBrowse", True)
-    #print(y.json())
+    # y = x.request("http://api.canlii.org/v1/legislationBrowse", True)
+    # print(y.json())
     y = x.search("employment")
     print(y)

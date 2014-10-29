@@ -16,11 +16,11 @@ class LegislationDatabase(base.PyCanliiBase):
         elif (data['type'] == "STATUTE"):
             self.type = enums.LegislationType.Statute
         else:
-            #cause of the API this should never actually happen
+            # cause of the API this should never actually happen
             raise Exception("Invalid legislation type")
 
         self.id = data["databaseId"]
-        #still need to add jurisdiction although for basic functionality, strictly speaking, not required
+        # still need to add jurisdiction although for basic functionality, strictly speaking, not required
         self.jurisdiction = enums.LegislationJurisdiction[data['jurisdiction']]
         self.legislation = []
         self._populated = False
@@ -62,7 +62,7 @@ class Legislation(base.PyCanliiBase):
         self._endDate = None
         self._repealed = None
 
-        #Used to store the content of the Legislation
+        # Used to store the content of the Legislation
         self._content = None
 
         if (data['type'] == "REGULATION"):
@@ -71,7 +71,7 @@ class Legislation(base.PyCanliiBase):
         elif (data['type'] == "STATUTE"):
             self.type = enums.LegislationType.Statute
         else:
-            #cause of the API this should never actually happen
+            # cause of the API this should never actually happen
             raise Exception("Invalid legislation type")
 
 
