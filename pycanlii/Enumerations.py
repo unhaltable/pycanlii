@@ -1,8 +1,10 @@
 from enum import Enum
 
+
 class LegislationType(Enum):
     Regulation = 0
     Statute = 1
+
 
 class LegislationJurisdiction(Enum):
     ca = 0
@@ -20,9 +22,11 @@ class LegislationJurisdiction(Enum):
     yk = 12
     bc = 13
 
+
 class Language(Enum):
     fr = 0
-    en = 1 # because english is greater than french
+    en = 1  # because english is greater than french
+
 
 class DateScheme(Enum):
     ENTRY_INTO_FORCE = 0
