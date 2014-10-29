@@ -90,7 +90,7 @@ class Legislation(base.PyCanliiBase):
         else:
             self._repealed = True
 
-        self._populate = True
+        self._populated = True
 
     def getContent(self):
         if not self._populated:
