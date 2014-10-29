@@ -1,4 +1,4 @@
-pycanlii [![Travis CI][travis-badge]][travis] [![Code Health][landscape-badge]][landscape]
+pycanlii [![Travis CI][travis-badge]][travis] [![Code Health][landscape-badge]][landscape] [![Documentation Status][readthedocs-badge]][readthedocs]
 ========
 
 Python API Wrapper for CanLII
@@ -35,7 +35,9 @@ Search | Working (sortof)
 caseCitatorTease| NYI
 
 
-[travis-badge]:    http://img.shields.io/travis/sherlocke/pycanlii.svg?style=flat
-[travis]:          https://travis-ci.org/sherlocke/pycanlii
-[landscape-badge]: https://landscape.io/github/sherlocke/pycanlii/master/landscape.png?style=flat
-[landscape]:       https://landscape.io/github/sherlocke/pycanlii/master
+[travis-badge]:      http://img.shields.io/travis/sherlocke/pycanlii.svg?style=flat
+[travis]:            https://travis-ci.org/sherlocke/pycanlii
+[landscape-badge]:   https://landscape.io/github/sherlocke/pycanlii/master/landscape.png?style=flat
+[landscape]:         https://landscape.io/github/sherlocke/pycanlii/master
+[readthedocs-badge]: https://readthedocs.org/projects/pycanlii/badge/?version=latest
+[readthedocs]:       https://readthedocs.org/projects/pycanlii/?badge=latest
