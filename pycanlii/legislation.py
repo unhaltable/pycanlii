@@ -2,6 +2,8 @@ import pycanlii.pycanliibase as base
 import pycanlii.Enumerations as enums
 import pycanlii.helpers
 from pycanlii.canlii import *
+from bs4 import BeautifulSoup
+
 import os
 
 class LegislationDatabase(base.PyCanliiBase):
@@ -56,7 +58,7 @@ class Legislation(base.PyCanliiBase):
         self._url = None
         self._title = None
         self._citation = None
-        self._dataScheme = None
+        self._dateScheme = None
         self._startDate = None
         self._endDate = None
         self._repealed = None
@@ -75,7 +77,7 @@ class Legislation(base.PyCanliiBase):
         legis = legis.json()
         self._url = legis['url']
         self._title = legis['title']
-        self._dataScheme = enums.DataScheme.__members__[legis['dataScheme']]
+        self._dateScheme = enums.DateScheme.__members__[legis['dateScheme']]
         self._startDate = legis['startDate']
         self._endDate = legis['endDate']
         
@@ -86,8 +88,17 @@ class Legislation(base.PyCanliiBase):
 
         self._populate = True
 
+    def getContent(self):
+        if not self._populated:
+            self._populate()
+
+        req = self._request(self.url, False)
+
+
+
 
 
 if __name__ == '__main__':
     canlii = CanLII(os.environ["CANLII_KEY"])
     legislation = canlii.legislation_databases()
+    legislation[0][0].getContent()

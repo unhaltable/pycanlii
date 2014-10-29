@@ -20,7 +20,7 @@ canlii = CanLII('gHuBwvVx2VguA6meMfuXHGmy', language='en')
 databases = canlii.legislation_databases()
 ```
 
-## Status
+## Development Progress
 
 Component | Status
 ----------|--------

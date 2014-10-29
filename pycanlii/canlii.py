@@ -22,7 +22,6 @@ class CanLII(base.PyCanliiBase):
         for db in dbs:
             self._db.append(LegislationDatabase(db, self.key, self.lang))
 
-
         return self._db
 
 
