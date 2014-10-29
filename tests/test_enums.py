@@ -1,5 +1,6 @@
 import pycanlii.Enumerations as enums
 
+
 class TestEnums(object):
 
     #This probably seems redundant, it's just to check if it works on all versions of python
@@ -11,4 +12,4 @@ class TestEnums(object):
         assert enums.Language.en.name == 'en'
 
         #Tests if the __members__ variable exists
-        assert enums.DateScheme.__members__['DOWNLOAD_DATE'] == enums.DateScheme.DOWNLOAD_DATE
+        assert enums.DateScheme['DOWNLOAD_DATE'] == enums.DateScheme.DOWNLOAD_DATE

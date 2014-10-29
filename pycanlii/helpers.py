@@ -9,4 +9,4 @@ def getJurisdiction(location_code):
     :return: An enumeration representing the jurisdiction of the postal code
     """
 
-    return enums.LegislationJurisdiction.__members__[location_code]
+    return enums.LegislationJurisdiction[location_code]

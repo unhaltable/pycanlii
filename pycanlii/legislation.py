@@ -81,7 +81,7 @@ class Legislation(base.PyCanliiBase):
         legis = legis.json()
         self._url = legis['url']
         self._title = legis['title']
-        self._dateScheme = enums.DateScheme.__members__[legis['dateScheme']]
+        self._dateScheme = enums.DateScheme[legis['dateScheme']]
         self._startDate = legis['startDate']
         self._endDate = legis['endDate']
         
