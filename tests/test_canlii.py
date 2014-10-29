@@ -16,8 +16,8 @@ class TestCanLII:
 
     def test_legis_db(self, canlii):
         legislation = canlii.legislation_databases()
-        assert type(legislation) == LegislationDatabase
+        assert type(legislation) == list
 
     def test_case_db(self, canlii):
         cases = canlii.case_databases()
-        assert type(cases) == CaseDatabase
+        assert type(cases) == list
