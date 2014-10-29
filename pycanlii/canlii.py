@@ -33,7 +33,6 @@ class CanLII(base.PyCanliiBase):
 
         return casedb
 
-    #NYI
     def search(self, fullText, resultCount=100, offset=0):
         '''
         Returns upto the first 100 results of a search in CanLII. If you can potentially return more than 100 results
