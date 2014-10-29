@@ -64,5 +64,5 @@ def legis_fr():
 
 @pytest.fixture
 def legislation(legis_en, config):
-    return Case(legis_en, config['key'], pycanlii.enumerations.Language.en)
+    return Legislation(legis_en, config['key'], pycanlii.enumerations.Language.en)
 
