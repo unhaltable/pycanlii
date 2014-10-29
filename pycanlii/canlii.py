@@ -5,6 +5,9 @@ import os
 import pycanlii.enumerations as enums
 
 class CanLII(base.PyCanliiBase):
+    """
+    This is the object to be used to interface with the CanLII API.
+    """
 
     def __init__(self, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)
@@ -25,6 +28,10 @@ class CanLII(base.PyCanliiBase):
 
 
     def case_databases(self):
+        """
+        Returns a list of CaseDatabase objects, each representing the case database on CanLII
+        :return: A list of CaseDatabase objects
+        """
         l = self._request("http://api.canlii.org/v1/caseBrowse", True)
         casedb = []
         dbs = l.json()['caseDatabases']
@@ -34,7 +41,7 @@ class CanLII(base.PyCanliiBase):
         return casedb
 
     def search(self, fullText, resultCount=100, offset=0):
-        '''
+        """
         Returns upto the first 100 results of a search in CanLII. If you can potentially return more than 100 results
         you're bad and you should feel bad. Put in a more precise search.
         :param fullText: Your search query
@@ -42,7 +49,7 @@ class CanLII(base.PyCanliiBase):
         :param offset: This can technically be anything, any positive integer anyways. I'd be wary of going
         _too_ hard on this one
         :return: A list of results
-        '''
+        """
         results = self._request("http://api.canlii.org/v1/search", True, fullText=fullText,
                                  resultCount=resultCount, offset=offset).json()
         results = results['results']
@@ -53,11 +60,3 @@ class CanLII(base.PyCanliiBase):
             else:
                 l.append(pycanlii.case.Case(result['case'], self._key, self._lang))
         return l
-
-
-if __name__ == '__main__':
-    x = CanLII(os.environ["CANLII_KEY"])
-    # y = x.request("http://api.canlii.org/v1/legislationBrowse", True)
-    # print(y.json())
-    y = x.search("employment")
-    print(y)
