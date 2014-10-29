@@ -100,15 +100,3 @@ class Legislation(base.PyCanliiBase):
             self._content = BeautifulSoup(req.content).find(id='canliidocumentcontent')
 
         return self._content
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    canlii = CanLII(os.environ["CANLII_KEY"])
-    legislation = canlii.legislation_databases()
-    con = legislation[0][0].getContent()
-    print(con.prettify())

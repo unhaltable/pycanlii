@@ -79,9 +79,3 @@ class Case(base.PyCanliiBase):
 
         return self._content
 
-
-if __name__ == '__main__':
-    canlii = CanLII(os.environ["CANLII_KEY"])
-    legislation = canlii.case_databases()
-    con = legislation[0][10].getContent()
-    print(con.get_text())
