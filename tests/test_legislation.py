@@ -1,5 +1,7 @@
 from pycanlii.legislation import Legislation
 from pycanlii.enumerations import Language, LegislationType
+from bs4 import BeautifulSoup
+
 class TestLegislation:
 
     def test__init__(self, legis_en, legis_fr, config):
@@ -21,3 +23,6 @@ class TestLegislation:
         assert fr.regulation == LegislationType[legis_fr['type']]
         assert fr._key == config['key']
         assert fr._lang == Language.fr
+
+    def test_getContent(self, legislation):
+        assert type(legislation.getContent()) == BeautifulSoup
