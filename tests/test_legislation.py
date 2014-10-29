@@ -7,7 +7,7 @@ class TestLegislation:
         fr = Legislation(legis_fr, config['key'], Language.fr)
 
         assert en.databaseId == legis_en['databaseId']
-        assert en.caseId == legis_en['legislationId']
+        assert en.legislationId == legis_en['legislationId']
         assert en.title == legis_en['title']
         assert en.citation == legis_en['citation']
         assert en.regulation == LegislationType[legis_en['type']]
@@ -15,7 +15,7 @@ class TestLegislation:
         assert en._lang == Language.en
 
         assert fr.databaseId == legis_fr['databaseId']
-        assert fr.caseId == legis_fr['legislationId']
+        assert fr.legislationId == legis_fr['legislationId']
         assert fr.title == legis_fr['title']
         assert fr.citation == legis_fr['citation']
         assert fr.regulation == LegislationType[legis_fr['type']]
