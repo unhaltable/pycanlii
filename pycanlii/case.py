@@ -105,7 +105,7 @@ class Case(base.PyCanliiBase):
     def citedLegislation(self):
         """
         Returns a list of up to a maximum of 5 pieces of legislation that are cited by this one. Not yet implemented.
-        
+
         :return: A list of up to a maximum of 5 pieces of legislation that are cited by this one
         """
         return
