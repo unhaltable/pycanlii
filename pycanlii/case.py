@@ -75,6 +75,7 @@ class Case(base.PyCanliiBase):
     def getContent(self):
         """
         Returns the HTML content of the case
+
         :return: Returns a BeautifulSoup object representing the HTML content of the case
         """
         if not self._populated:
@@ -89,6 +90,7 @@ class Case(base.PyCanliiBase):
     def citedCases(self):
         """
         Returns a list of up to a maximum of 5 cases that are cited by this one. Not yet implemented.
+
         :return: A list of up to a maximum of 5 cases that are cited by this one
         """
         return
@@ -96,12 +98,14 @@ class Case(base.PyCanliiBase):
     def citingCases(self):
         """
         Returns a list of up to a maximum of 5 cases that are citing this one. Not yet implemented.
+
         :return: A list of up to a maximum of 5 cases that are citing this one
         """
         return
     def citedLegislation(self):
         """
         Returns a list of up to a maximum of 5 pieces of legislation that are cited by this one. Not yet implemented.
+        
         :return: A list of up to a maximum of 5 pieces of legislation that are cited by this one
         """
         return

@@ -11,6 +11,7 @@ class PyCanliiBase(object):
         Sends a request to the input url, with the url parameters
         place in order with a / between each and with the
         query parameters input
+
         :param url:
         :param authenticated: A boolean representing if this request
         should be authenticated or not

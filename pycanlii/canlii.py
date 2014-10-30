@@ -13,6 +13,7 @@ class CanLII(base.PyCanliiBase):
         """
         Initializes a CanLII object. It takes in a string representing your api key for the CanLII API. Optionally you
         can also put in a pycanlii.enumerations.Language enum, if you don't it defaults to english.
+
         :param apikey: A string representing your CanLII api key
         :param language: A pycanlii.enuemerations.Language enum, defaults to english
         :return: None
@@ -23,6 +24,7 @@ class CanLII(base.PyCanliiBase):
     def legislation_databases(self):
         """
         Returns a list of LegislationDatabase objects, each representing a legislation database on CanLII
+
         :return: A list of LegislationDatabase objects
         """
         l = self._request("http://api.canlii.org/v1/legislationBrowse", True)
@@ -50,6 +52,7 @@ class CanLII(base.PyCanliiBase):
     def search(self, query, max_results, offset=0):
         """
         Searches the CanLII database for documents related to the input query
+
         :param query: A string representing your search query
         :param max_results: The number of results to be returned at max, must be less than 100.
         :param offset: This can technically be anything, any positive integer anyways. I'd be wary of going
