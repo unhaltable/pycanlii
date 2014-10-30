@@ -89,7 +89,7 @@ class Case(base.PyCanliiBase):
 
     def citedCases(self):
         """
-        Returns a list of up to a maximum of 5 cases that are cited by this one. Not yet implemented.
+        Returns a list of up to a maximum of 5 cases that are cited by this one.
 
         :return: A list of up to a maximum of 5 cases that are cited by this one, if there are no cited cases, None
         is returned
@@ -110,7 +110,7 @@ class Case(base.PyCanliiBase):
 
     def citingCases(self):
         """
-        Returns a list of up to a maximum of 5 cases that are citing this one. Not yet implemented.
+        Returns a list of up to a maximum of 5 cases that are citing this one.
 
         :return: A list of up to a maximum of 5 cases that are citing this one, if there are no citing cases, None
         is returned
@@ -129,7 +129,7 @@ class Case(base.PyCanliiBase):
 
     def citedLegislation(self):
         """
-        Returns a list of up to a maximum of 5 pieces of legislation that are cited by this one. Not yet implemented.
+        Returns a list of up to a maximum of 5 pieces of legislation that are cited by this one.
 
         :return: A list of up to a maximum of 5 pieces of legislation that are cited by this one, if there are no cited
          legislation, None is returned
