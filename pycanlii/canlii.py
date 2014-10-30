@@ -9,12 +9,14 @@ class CanLII(base.PyCanliiBase):
     This is base the object used to interface with the CanLII API.
     """
 
+
     def __init__(self, apikey, language=enums.Language.en):
         """
-
-        :param apikey:
-        :param language:
-        :return:
+        Initializes a CanLII object. It takes in a string representing your api key for the CanLII API. Optionally you
+        can also put in a pycanlii.enumerations.Language enum, if you don't it defaults to english.
+        :param apikey: A string representing your CanLII api key
+        :param language: A pycanlii.enuemerations.Language enum, defaults to english
+        :return: None
         """
         base.PyCanliiBase.__init__(self, apikey, language)
         self._db = None
