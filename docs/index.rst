@@ -11,7 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   intro
+    test
 
 .. autoclass:: pycanlii.canlii.CanLII
   :members:
