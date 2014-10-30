@@ -48,18 +48,21 @@ class CanLII(base.PyCanliiBase):
 
         return casedb
 
-    def search(self, fullText, resultCount=100, offset=0):
+    def search(self, query, max_results, offset=0):
         """
-        Returns upto the first 100 results of a search in CanLII. If you can potentially return more than 100 results
-        you're bad and you should feel bad. Put in a more precise search.
-        :param fullText: Your search query
-        :param resultCount: Some number less than 100. Okay?
+        Searches the CanLII database for documents related to the input query
+        :param query: A string representing your search query
+        :param max_results: The number of results to be returned at max, must be less than 100.
         :param offset: This can technically be anything, any positive integer anyways. I'd be wary of going
         _too_ hard on this one
         :return: A list of results
         """
-        results = self._request("http://api.canlii.org/v1/search", True, fullText=fullText,
-                                 resultCount=resultCount, offset=offset).json()
+
+        if (max_results > 100):
+            raise ValueError("The input max_results was over 100, max_results must be less than 100")
+        
+        results = self._request("http://api.canlii.org/v1/search", True, fullText=query,
+                                 resultCount=max_results, offset=offset).json()
         results = results['results']
         l = []
         for result in results:
