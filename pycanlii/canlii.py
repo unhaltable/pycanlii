@@ -10,6 +10,12 @@ class CanLII(base.PyCanliiBase):
     """
 
     def __init__(self, apikey, language=enums.Language.en):
+        """
+
+        :param apikey:
+        :param language:
+        :return:
+        """
         base.PyCanliiBase.__init__(self, apikey, language)
         self._db = None
 
