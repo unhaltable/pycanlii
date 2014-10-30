@@ -93,6 +93,8 @@ class Case(base.PyCanliiBase):
 
         :return: A list of up to a maximum of 5 cases that are cited by this one
         """
+        response = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
+                            self.databaseId, self.caseId, "citedCases").json()["citedCases"]
         return
 
     def citingCases(self):
@@ -101,6 +103,8 @@ class Case(base.PyCanliiBase):
 
         :return: A list of up to a maximum of 5 cases that are citing this one
         """
+        req = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
+                            self.databaseId, self.caseId, "citingCases").json()["citingCases"]
         return
     def citedLegislation(self):
         """
@@ -108,4 +112,6 @@ class Case(base.PyCanliiBase):
 
         :return: A list of up to a maximum of 5 pieces of legislation that are cited by this one
         """
+        req = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
+                            self.databaseId, self.caseId, "citedLegislations").json()["citedLegislation"]
         return
