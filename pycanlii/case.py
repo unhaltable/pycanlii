@@ -91,27 +91,57 @@ class Case(base.PyCanliiBase):
         """
         Returns a list of up to a maximum of 5 cases that are cited by this one. Not yet implemented.
 
-        :return: A list of up to a maximum of 5 cases that are cited by this one
+        :return: A list of up to a maximum of 5 cases that are cited by this one, if there are no cited cases, None
+        is returned
         """
         response = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
-                            self.databaseId, self.caseId, "citedCases").json()["citedCases"]
-        return
+                            self.databaseId, self.caseId, "citedCases").json()
+
+        if "citedCases" in response:
+            cases = response["citedCases"]
+            l = []
+            for case in cases:
+                l.append(Case(case, self._key))
+            return l
+        else:
+            return None
+
+
 
     def citingCases(self):
         """
         Returns a list of up to a maximum of 5 cases that are citing this one. Not yet implemented.
 
-        :return: A list of up to a maximum of 5 cases that are citing this one
+        :return: A list of up to a maximum of 5 cases that are citing this one, if there are no citing cases, None
+        is returned
         """
-        req = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
-                            self.databaseId, self.caseId, "citingCases").json()["citingCases"]
-        return
+        response = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
+                            self.databaseId, self.caseId, "citingCases").json()
+
+        if "citedCases" in response:
+            cases = response["citingCases"]
+            l = []
+            for case in cases:
+                l.append(Case(case, self._key))
+            return l
+        else:
+            return None
+
     def citedLegislation(self):
         """
         Returns a list of up to a maximum of 5 pieces of legislation that are cited by this one. Not yet implemented.
 
-        :return: A list of up to a maximum of 5 pieces of legislation that are cited by this one
+        :return: A list of up to a maximum of 5 pieces of legislation that are cited by this one, if there are no cited
+         legislation, None is returned
         """
-        req = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
-                            self.databaseId, self.caseId, "citedLegislations").json()["citedLegislation"]
-        return
+        response = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
+                            self.databaseId, self.caseId, "citedLegislations").json()
+
+        if "citedCases" in response:
+            cases = response["citedLegislation"]
+            l = []
+            for case in cases:
+                l.append(Case(case, self._key))
+            return l
+        else:
+            return None

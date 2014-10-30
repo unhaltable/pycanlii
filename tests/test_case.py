@@ -29,15 +29,18 @@ class TestCase:
 
     def test_citedCases(self, case):
         c = case.citedCases()
-        for i in c:
-            assert type(i) == Case
+        if not c == None:
+            for i in c:
+                assert type(i) == Case
 
     def test_citingCases(self, case):
         c = case.citingCases()
-        for i in c:
-            assert type(i) == Case
+        if not c == None:
+            for i in c:
+                assert type(i) == Case
 
     def test_citedLegislation(self, case):
         c = case.citedLegislation()
-        for i in c:
-            assert type(i) == Legislation
+        if not c == None:
+            for i in c:
+                assert type(i) == Legislation
