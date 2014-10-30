@@ -118,7 +118,7 @@ class Case(base.PyCanliiBase):
         response = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
                             self.databaseId, self.caseId, "citingCases").json()
 
-        if "citedCases" in response:
+        if "citingCases" in response:
             cases = response["citingCases"]
             l = []
             for case in cases:
