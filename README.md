@@ -31,7 +31,7 @@ Component | Status
 ----------|--------
 legislationBrowse | Working
 caseBrowse | Working
-Search | Working (sortof)
+Search | Working
 caseCitatorTease| NYI
 
 
