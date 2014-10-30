@@ -56,7 +56,7 @@ class CanLII(base.PyCanliiBase):
         :param query: A string representing your search query
         :param max_results: The number of results to be returned at max, must be less than 100.
         :param offset: This can technically be anything, any positive integer anyways.
-        :return: A list of results
+        :return: A list of Case and Legislation objects representing the search results
         """
 
         if (max_results > 100):
