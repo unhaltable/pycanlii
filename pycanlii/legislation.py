@@ -50,7 +50,6 @@ class Legislation(base.PyCanliiBase):
         self.legislationId = data['legislationId']
         self.title = data['title']
         self.citation = data['citation']
-        self.regulation = enums.LegislationType[data['type']]
 
         self._populated = False
         self._url = None
