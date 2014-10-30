@@ -39,6 +39,9 @@ class CaseDatabase(base.PyCanliiBase):
         return self._cases[item]
 
 class Case(base.PyCanliiBase):
+    """
+    An object representing a CanLII Case
+    """
 
     def __init__(self, data, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)
@@ -70,12 +73,35 @@ class Case(base.PyCanliiBase):
         self._populated = True
 
     def getContent(self):
+        """
+        Returns the HTML content of the case
+        :return: Returns a BeautifulSoup object representing the HTML content of the case
+        """
         if not self._populated:
             self._populate()
 
         if not self._content:
             req = requests.get(self._url)
-            self._content = BeautifulSoup(req.content).find(id='originalDocument')
+            self._content = BeautifulSoup(req.content)
 
         return self._content
 
+    def citedCases(self):
+        """
+        Returns a list of up to a maximum of 5 cases that are cited by this one. Not yet implemented.
+        :return: A list of up to a maximum of 5 cases that are cited by this one
+        """
+        return
+
+    def citingCases(self):
+        """
+        Returns a list of up to a maximum of 5 cases that are citing this one. Not yet implemented.
+        :return: A list of up to a maximum of 5 cases that are citing this one
+        """
+        return
+    def citedLegislation(self):
+        """
+        Returns a list of up to a maximum of 5 pieces of legislation that are cited by this one. Not yet implemented.
+        :return: A list of up to a maximum of 5 pieces of legislation that are cited by this one
+        """
+        return
