@@ -11,14 +11,14 @@ class TestCase:
         fr = Case(case_fr, config['key'])
 
         assert en.databaseId == case_en['databaseId']
-        assert en.caseId == case_en['caseId']
+        assert en.caseId == case_en['caseId']['en']
         assert en.title == case_en['title']
         assert en.citation == case_en['citation']
         assert en._key == config['key']
         assert en._lang == Language.en
 
         assert fr.databaseId == case_fr['databaseId']
-        assert fr.caseId == case_fr['caseId']
+        assert fr.caseId == case_fr['caseId']['fr']
         assert fr.title == case_fr['title']
         assert fr.citation == case_fr['citation']
         assert fr._key == config['key']

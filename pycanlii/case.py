@@ -44,9 +44,18 @@ class Case(base.PyCanliiBase):
     """
 
     def __init__(self, data, apikey, language=enums.Language.en):
+        caseid = data["caseId"]
+        if type(caseid) == str:
+            self.caseId = caseid
+        elif 'en' in caseid:
+            self.caseId = caseid["en"]
+            language = enums.Language.en
+        else:
+            self.caseId = caseid["fr"]
+            language = enums.Language.fr
         base.PyCanliiBase.__init__(self, apikey, language)
         self.databaseId = data['databaseId']
-        self.caseId = data['caseId'][self._lang.name]
+        # self.caseId = data['caseId'][self._lang.name]
         self.title = data['title']
         self.citation = data['citation']
 
@@ -91,8 +100,7 @@ class Case(base.PyCanliiBase):
         """
         Returns a list of up to a maximum of 5 cases that are cited by this one.
 
-        :return: A list of up to a maximum of 5 cases that are cited by this one, if there are no cited cases, None
-        is returned
+        :return: A list of up to a maximum of 5 cases that are cited by this one, if there are no cited cases, None is returned
         """
         response = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
                             self.databaseId, self.caseId, "citedCases").json()
