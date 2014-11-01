@@ -35,7 +35,5 @@ class PyCanliiBase(object):
         else:
             result = requests.get(url)
 
-        if result.status_code == requests.codes.ok:
-            return result
-        else:
-            result.raise_for_status()
+        result.raise_for_status()
+        return result
