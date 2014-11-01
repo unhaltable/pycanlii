@@ -1,8 +1,6 @@
-from bs4 import BeautifulSoup
 from pycanlii.case import Case
 from pycanlii.legislation import Legislation
 from pycanlii.enums import Language
-
 
 class TestCase:
 

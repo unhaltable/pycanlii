@@ -1,6 +1,5 @@
 from pycanlii.legislation import Legislation
 from pycanlii.enums import Language, LegislationType, DateScheme
-from bs4 import BeautifulSoup
 
 class TestLegislation:
 
