@@ -25,7 +25,7 @@ def case_fr():
     return {
         'databaseId': 'qccs',
         'caseId': { 'fr' : '2008qccs3554' },
-        'title' : 'Société 3505 Ste-Famille inc. c. Régie du logement',
+        'title' : u'Société 3505 Ste-Famille inc. c. Régie du logement',
         'citation' : '2008 QCCS 3554 (CanLII)'
     }
 
