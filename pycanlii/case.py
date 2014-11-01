@@ -126,8 +126,7 @@ class Case(base.PyCanliiBase):
         """
         Returns a list of up to a maximum of 5 cases that are citing this one.
 
-        :return: A list of up to a maximum of 5 cases that are citing this one, if there are no citing cases, None
-        is returned
+        :return: A list of up to a maximum of 5 cases that are citing this one, if there are no citing cases, None is returned
         """
         response = self._request("http://api.canlii.org/v1/caseCitatorTease/", True,
                             self.databaseId, self.caseId, "citingCases").json()
