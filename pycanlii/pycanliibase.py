@@ -1,4 +1,5 @@
 import requests
+import datetime
 
 class PyCanliiBase(object):
     """
@@ -37,3 +38,16 @@ class PyCanliiBase(object):
 
         result.raise_for_status()
         return result
+
+    def _getDate(self, daystr):
+        """
+        Accepts a string of the form "YYYY-MM-DD" and returns a date object representing that date, if daystr is the
+        empty string, None is returned.
+
+        :param daystr: A string in the format "YYYY-MM-DD" representing a date
+        :return: A date object determined by the input string
+        """
+        if daystr == "":
+            return None
+        else:
+            return datetime.date(int(daystr[0:4]), int(daystr[5:7]), int(daystr[8:10]))
