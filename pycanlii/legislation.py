@@ -50,7 +50,7 @@ class Legislation(base.PyCanliiBase):
     An object representing Legislation on CanLII
 
     Attributes:
-        databaseId: A string representing the databaseId of this legislation
+        :databaseId: A string representing the databaseId of this legislation
         legislationId: A string representing the legislationId of this legislation
         title: A string representing the title of this legislation
         content: A BeautifulSoup object representing the HTML content of this legislation
