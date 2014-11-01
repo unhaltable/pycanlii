@@ -54,6 +54,5 @@ class TestCase:
     def test__getitem__(self, canlii):
         db = canlii.case_databases()
         db[5]
-        db[11000]
 
 

@@ -35,4 +35,3 @@ class TestLegislation:
     def test__getitem__(self, canlii):
         db = canlii.legislation_databases()
         db[5]
-        db[11000]
