@@ -1,9 +1,12 @@
 import pycanlii.pycanliibase as base
-import pycanlii.enumerations as enums
+import pycanlii.enums as enums
 import requests
 from bs4 import BeautifulSoup
 
 class LegislationDatabase(base.PyCanliiBase):
+    """
+    A database of CanLII Legislation. This object is both indexable and iterable.
+    """
 
     def __init__(self, data, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)
@@ -89,6 +92,11 @@ class Legislation(base.PyCanliiBase):
         self._populated = True
 
     def getContent(self):
+        """
+        Returns the HTML content of the legislation
+
+        :return: Returns a BeautifulSoup object representing the HTML content of the legislation
+        """
         if not self._populated:
             self._populate()
 

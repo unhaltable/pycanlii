@@ -2,7 +2,7 @@
 import pytest
 import os
 
-import pycanlii.enumerations
+import pycanlii.enums
 from pycanlii.canlii import CanLII
 from pycanlii.case import Case
 from pycanlii.legislation import Legislation
@@ -19,7 +19,7 @@ def config():
 
 @pytest.fixture
 def canlii(config):
-    return CanLII(config['key'], pycanlii.enumerations.Language.en)
+    return CanLII(config['key'], pycanlii.enums.Language.en)
 
 @pytest.fixture
 def case_fr():
@@ -65,5 +65,5 @@ def legis_fr():
 
 @pytest.fixture
 def legislation(legis_en, config):
-    return Legislation(legis_en, config['key'], pycanlii.enumerations.Language.en)
+    return Legislation(legis_en, config['key'], pycanlii.enums.Language.en)
 

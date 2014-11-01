@@ -1,5 +1,5 @@
 from pycanlii.legislation import Legislation
-from pycanlii.enumerations import Language, LegislationType
+from pycanlii.enums import Language, LegislationType
 from bs4 import BeautifulSoup
 
 class TestLegislation:

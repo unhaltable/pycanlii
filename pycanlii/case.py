@@ -1,5 +1,5 @@
 import pycanlii.pycanliibase as base
-import pycanlii.enumerations as enums
+import pycanlii.enums as enums
 import requests
 from bs4 import BeautifulSoup
 

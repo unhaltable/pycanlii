@@ -1,5 +1,5 @@
 from pycanlii.canlii import CanLII
-from pycanlii.enumerations import Language
+from pycanlii.enums import Language
 from pycanlii.legislation import LegislationDatabase
 from pycanlii.case import CaseDatabase
 

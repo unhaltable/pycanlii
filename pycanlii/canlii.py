@@ -1,13 +1,12 @@
 import pycanlii.pycanliibase as base
 import pycanlii.legislation
 import pycanlii.case
-import pycanlii.enumerations as enums
+import pycanlii.enums as enums
 
 class CanLII(base.PyCanliiBase):
     """
     This is base the object used to interface with the CanLII API.
     """
-
 
     def __init__(self, apikey, language=enums.Language.en):
         """
