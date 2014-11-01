@@ -25,7 +25,7 @@ class TestLegislation:
         assert fr._lang == Language.fr
 
     def test_content(self, legislation):
-        assert type(legislation.content) == BeautifulSoup
+        legislation.content
 
     def test__iter__(self, canlii):
         db = canlii.legislation_databases()
