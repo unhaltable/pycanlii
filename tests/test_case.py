@@ -44,3 +44,16 @@ class TestCase:
         if not c == None:
             for i in c:
                 assert type(i) == Legislation
+
+
+    def test__iter__(self, canlii):
+        db = canlii.case_databases()
+        for case in db:
+            pass
+
+    def test__getitem__(self, canlii):
+        db = canlii.case_databases()
+        db[5]
+        db[11000]
+
+

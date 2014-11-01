@@ -26,3 +26,13 @@ class TestLegislation:
 
     def test_getContent(self, legislation):
         assert type(legislation.getContent()) == BeautifulSoup
+
+    def test__iter__(self, canlii):
+        db = canlii.legislation_databases()
+        for legis in db:
+            pass
+
+    def test__getitem__(self, canlii):
+        db = canlii.legislation_databases()
+        db[5]
+        db[11000]
