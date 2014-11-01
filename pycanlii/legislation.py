@@ -11,8 +11,7 @@ class LegislationDatabase(base.PyCanliiBase):
         :name: A string representing the name of this LegislationDatabase
         :type: An instance of the LegislationType enum indicating what kind of Legislation this LegislationDatabasecontains
         :id: A string representing the databaseId of this LegislationDatabase
-        :jurisdiction: An instance of a Jurisdiction enum representing the Jurisdiction of the Legislation in this
-        LegislationDatabase
+        :jurisdiction: An instance of a Jurisdiction enum representing the Jurisdiction of the Legislation in this LegislationDatabase
     """
 
     def __init__(self, data, apikey, language=enums.Language.en):
