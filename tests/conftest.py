@@ -41,7 +41,7 @@ def case_en():
 
 @pytest.fixture
 def case(case_en, config):
-    return Case(case_en, config['key'], pycanlii.enumerations.Language.en)
+    return Case(case_en, config['key'])
 
 @pytest.fixture
 def legis_en():

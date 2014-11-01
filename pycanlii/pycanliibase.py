@@ -4,7 +4,7 @@ class PyCanliiBase(object):
     """
     The base object in the pycanlii library. All objects in the library inherit from it.
     """
-    
+
     def __init__(self, apikey, language):
         self._key = apikey
         self._lang = language

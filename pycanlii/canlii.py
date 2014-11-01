@@ -70,5 +70,5 @@ class CanLII(base.PyCanliiBase):
             if 'legislation' in result:
                 l.append(pycanlii.legislation.Legislation(result['legislation'], self._key, self._lang))
             else:
-                l.append(pycanlii.case.Case(result['case'], self._key, self._lang))
+                l.append(pycanlii.case.Case(result['case'], self._key))
         return l

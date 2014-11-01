@@ -28,7 +28,7 @@ class CaseDatabase(base.PyCanliiBase):
             self._full = False
 
         for case in cases:
-            self._cases.append(Case(case, self._key, self._lang))
+            self._cases.append(Case(case, self._key))
 
 
     def __iter__(self):
@@ -46,7 +46,7 @@ class Case(base.PyCanliiBase):
     An object representing a CanLII Case
     """
 
-    def __init__(self, data, apikey, language=enums.Language.en):
+    def __init__(self, data, apikey):
         caseid = data["caseId"]
         if type(caseid) == str:
             self.caseId = caseid
