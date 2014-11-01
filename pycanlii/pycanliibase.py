@@ -38,4 +38,4 @@ class PyCanliiBase(object):
         if result.status_code == requests.codes.ok:
             return result
         else:
-            raise Exception("Status code not okay, responded with response code " + str(result.status_code))
+            result.raise_for_status()
