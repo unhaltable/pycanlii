@@ -1,6 +1,6 @@
+# -*- coding: utf-8 -*-
 import pytest
 import os
-#coding: utf8 
 
 import pycanlii.enumerations
 from pycanlii.canlii import CanLII
