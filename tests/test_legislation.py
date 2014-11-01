@@ -1,5 +1,5 @@
 from pycanlii.legislation import Legislation
-from pycanlii.enums import Language, LegislationType
+from pycanlii.enums import Language, LegislationType, DateScheme
 from bs4 import BeautifulSoup
 
 class TestLegislation:
@@ -24,8 +24,8 @@ class TestLegislation:
         assert fr._key == config['key']
         assert fr._lang == Language.fr
 
-    def test_getContent(self, legislation):
-        assert type(legislation.getContent()) == BeautifulSoup
+    def test_content(self, legislation):
+        assert type(legislation.content) == BeautifulSoup
 
     def test__iter__(self, canlii):
         db = canlii.legislation_databases()
@@ -35,3 +35,22 @@ class TestLegislation:
     def test__getitem__(self, canlii):
         db = canlii.legislation_databases()
         db[5]
+
+    def test_url(self, legislation, legis_en):
+        assert legislation.url == legis_en['url']
+
+    def test_dateScheme(self, legislation, legis_en):
+        assert legislation.dateScheme == DateScheme[legis_en['dateScheme']]
+
+    def test_startDate(self, legislation, legis_en):
+        assert legislation.startDate == legis_en['startDate']
+
+    def test_endDate(self, legislation, legis_en):
+        assert legislation.endDate == legis_en['endDate']
+
+    def test_repealed(self, legislation, legis_en):
+        if legis_en['repealed'] == "NO":
+            assert legislation.repealed == False
+        else:
+            assert legislation.repealed == True
+

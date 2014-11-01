@@ -52,11 +52,10 @@ class Legislation(base.PyCanliiBase):
         self.databaseId = data['databaseId']
         self.legislationId = data['legislationId']
         self.title = data['title']
-        self.citation = data['citation']
+        self._citation = data['citation']
 
         self._populated = False
         self._url = None
-        self._citation = None
         self._dateScheme = None
         self._startDate = None
         self._endDate = None
@@ -80,8 +79,8 @@ class Legislation(base.PyCanliiBase):
             legis = legis.json()
             self._url = legis['url']
             self._dateScheme = enums.DateScheme[legis['dateScheme']]
-            self._startDate = legis['startDate']
-            self._endDate = legis['endDate']
+            self._startDate = self._getDate(legis['startDate'])
+            self._endDate = self._getDate(legis['endDate'])
         
             if (legis['repealed']  == 'NO'):
                 self._repealed = False
@@ -123,7 +122,6 @@ class Legislation(base.PyCanliiBase):
 
         :return: A string representing the citation of this legislation object
         """
-        self._populate()
         return self._citation
 
     @property

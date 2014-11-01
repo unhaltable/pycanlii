@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 import os
+import datetime
 
 import pycanlii.enums
 from pycanlii.canlii import CanLII
@@ -47,10 +48,16 @@ def case(case_en, config):
 def legis_en():
     return {
       "databaseId": "car",
+      "url": "http://canlii.ca/t/7zqg",
       "legislationId": "sor-86-946",
       "title": "Abatement of Duties Payable Regulations",
       "citation": "SOR/86-946",
-      "type": "REGULATION"
+      "type": "REGULATION",
+      "language": "en",
+      "dateScheme": "ENTRY_INTO_FORCE",
+      "startDate": datetime.date(1986, 9, 11),
+      "endDate": None,
+      "repealed": "NO"
     }
 
 @pytest.fixture
