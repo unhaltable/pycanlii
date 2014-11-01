@@ -51,14 +51,14 @@ class Legislation(base.PyCanliiBase):
 
     Attributes:
         :databaseId: A string representing the databaseId of this legislation
-        legislationId: A string representing the legislationId of this legislation
-        title: A string representing the title of this legislation
-        content: A BeautifulSoup object representing the HTML content of this legislation
-        url: A string representing the URL where this legislation can be found
-        dateScheme: An instance of the DateScheme enum representing the dateScheme of this legislation
-        startDate: A date object representing the start date of this legislation
-        endDate: A date object representing the end date of this legislation. If it has no end date yet, it will be none
-        repealed: A boolean representing whether or not this legislation has been repealed or not
+        :legislationId: A string representing the legislationId of this legislation
+        :title: A string representing the title of this legislation
+        :content: A BeautifulSoup object representing the HTML content of this legislation
+        :url: A string representing the URL where this legislation can be found
+        :dateScheme: An instance of the DateScheme enum representing the dateScheme of this legislation
+        :startDate: A date object representing the start date of this legislation
+        :endDate: A date object representing the end date of this legislation. If it has no end date yet, it will be none
+        :repealed: A boolean representing whether or not this legislation has been repealed or not
     """
 
     def __init__(self, data, apikey, language=enums.Language.en):
