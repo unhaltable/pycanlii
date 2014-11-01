@@ -4,6 +4,9 @@ import requests
 from bs4 import BeautifulSoup
 
 class CaseDatabase(base.PyCanliiBase):
+    """
+    A database of CanLII Cases. This object is both indexable and iterable.
+    """
 
     def __init__(self, data, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)

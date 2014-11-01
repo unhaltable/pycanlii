@@ -33,9 +33,9 @@ def case_fr():
 def case_en():
     return {
         'databaseId': 'csc-scc',
-        'caseId': { 'en' : '2008scc9' },
-        'title' : 'Dunsmuir v. New Brunswick',
-        'citation' : '[2008] 1 SCR 190, 2008 SCC 9 (CanLII)'
+        'caseId': { 'en' : '2011scc47' },
+        'title' : 'Crookes v. Newton',
+        'citation' : '[2011] 3 SCR 269, 2011 SCC 47 (CanLII)'
     }
 
 @pytest.fixture
