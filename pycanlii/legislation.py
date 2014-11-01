@@ -56,7 +56,6 @@ class Legislation(base.PyCanliiBase):
 
         self._populated = False
         self._url = None
-        self._title = None
         self._citation = None
         self._dateScheme = None
         self._startDate = None
@@ -76,32 +75,75 @@ class Legislation(base.PyCanliiBase):
 
 
     def _populate(self):
-        legis = self._request("http://api.canlii.org/v1/legislationBrowse", True, self.databaseId, self.legislationId)
-        legis = legis.json()
-        self._url = legis['url']
-        self._title = legis['title']
-        self._dateScheme = enums.DateScheme[legis['dateScheme']]
-        self._startDate = legis['startDate']
-        self._endDate = legis['endDate']
+        if not self._populated:
+            legis = self._request("http://api.canlii.org/v1/legislationBrowse", True, self.databaseId, self.legislationId)
+            legis = legis.json()
+            self._url = legis['url']
+            self._dateScheme = enums.DateScheme[legis['dateScheme']]
+            self._startDate = legis['startDate']
+            self._endDate = legis['endDate']
         
-        if (legis['repealed']  == 'NO'):
-            self._repealed = False
-        else:
-            self._repealed = True
+            if (legis['repealed']  == 'NO'):
+                self._repealed = False
+            else:
+                self._repealed = True
 
-        self._populated = True
+            self._populated = True
 
-    def getContent(self):
+    @property
+    def content(self):
         """
         Returns the HTML content of the legislation
 
         :return: Returns a BeautifulSoup object representing the HTML content of the legislation
         """
-        if not self._populated:
-            self._populate()
+
+        self._populate()
 
         if not self._content:
             req = requests.get(self._url)
             self._content = BeautifulSoup(req.content)
 
         return self._content
+
+    @property
+    def url(self):
+        """
+        Gets the string representation of the URL where this legislation is located
+
+        :return: A string representing the URL where this legislation is located
+        """
+        self._populate()
+        return self._url
+
+    @property
+    def citation(self):
+        """
+        Gets the string representation of the citation of this legislation object
+
+        :return: A string representing the citation of this legislation object
+        """
+        self._populate()
+        return self._citation
+
+    @property
+    def dateScheme(self):
+        self._populate()
+        return self._dateScheme
+
+    @property
+    def startDate(self):
+        self._populate()
+        return self._startDate
+
+    @property
+    def endDate(self):
+        self._populate()
+        return self._endDate
+
+    @property
+    def repealed(self):
+        self._populate()
+        return self._repealed
+
+
