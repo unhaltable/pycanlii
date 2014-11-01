@@ -65,7 +65,6 @@ class Legislation(base.PyCanliiBase):
 
         if (data['type'] == "REGULATION"):
             self.type = enums.LegislationType.Regulation
-            self.type = enums.LegislationType.Regulation
         elif (data['type'] == "STATUTE"):
             self.type = enums.LegislationType.Statute
         else:
