@@ -6,6 +6,14 @@ from bs4 import BeautifulSoup
 class LegislationDatabase(base.PyCanliiBase):
     """
     A database of CanLII Legislation. This object is both indexable and iterable.
+
+    Attributes:
+        :name: A string representing the name of this LegislationDatabase
+        :type: An instance of the LegislationType enum indicating what kind of Legislation this LegislationDatabase
+        contains
+        :id: A string representing the databaseId of this LegislationDatabase
+        :jurisdiction" An instance of a Jurisdiction enum representing the Jurisdiction of the Legislation in this
+        LegislationDatabase
     """
 
     def __init__(self, data, apikey, language=enums.Language.en):
@@ -18,31 +26,32 @@ class LegislationDatabase(base.PyCanliiBase):
             self.type = enums.LegislationType.Statute
         else:
             # cause of the API this should never actually happen
-            raise Exception("Invalid legislation type")
+            raise Exception("Invalid legislation type, this should never happen, please open an issue on our " +
+                            "git repo at https://github.com/sherlocke/pycanlii and include your stack trace " +
+                            "or alternatively contribute and submit a pull request :)")
 
         self.id = data["databaseId"]
         # still need to add jurisdiction although for basic functionality, strictly speaking, not required
         self.jurisdiction = enums.Jurisdiction[data['jurisdiction']]
-        self.legislation = []
+        self._legislation = []
         self._populated = False
 
     def _getLegislation(self):
         legis = self._request("http://api.canlii.org/v1/legislationBrowse", True, self.id).json()['legislations']
         for legislation in legis:
-            self.legislation.append(Legislation(legislation, self._key, self._lang))
-
+            self._legislation.append(Legislation(legislation, self._key, self._lang))
 
     def __iter__(self):
         if not self._populated:
             self._getLegislation()
             self._populated = True
-        return self.legislation.__iter__()
+        return self._legislation.__iter__()
 
     def __getitem__(self, item):
         if not self._populated:
             self._getLegislation()
             self._populated = True
-        return self.legislation[item]
+        return self._legislation[item]
 
 
 class Legislation(base.PyCanliiBase):
