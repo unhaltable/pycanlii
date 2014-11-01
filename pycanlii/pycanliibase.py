@@ -16,11 +16,6 @@ class PyCanliiBase(object):
         place in order with a / between each and with the
         query parameters input.
 
-        :param url: A url with where to send the request
-        :param authenticated: A boolean representing if this request
-        should be authenticated or not
-        :param url_variables:
-        :param query_parameters:
         :return: A response object
         """
         if authenticated:

@@ -105,10 +105,8 @@ class Legislation(base.PyCanliiBase):
 
     @property
     def content(self):
-        self._populate()
-
         if not self._content:
-            req = requests.get(self._url)
+            req = requests.get(self.url)
             self._content = BeautifulSoup(req.content)
 
         return self._content

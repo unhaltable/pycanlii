@@ -24,8 +24,8 @@ class TestCase:
         assert fr._key == config['key']
         assert fr._lang == Language.fr
 
-    def test_getContent(self, case):
-        assert type(case.getContent()) == BeautifulSoup
+    def test_content(self, case):
+        assert type(case.content) == BeautifulSoup
 
     def test_citedCases(self, case):
         c = case.citedCases()

@@ -11,9 +11,7 @@ class CaseDatabase(base.PyCanliiBase):
     def __init__(self, data, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)
         self.name = data['name']
-
         self.id = data["databaseId"]
-        # still need to add jurisdiction although for basic functionality, strictly speaking, not required
         self.jurisdiction = enums.LegislationJurisdiction[data['jurisdiction']]
         self._cases = []
         self.index = 0
@@ -44,6 +42,17 @@ class CaseDatabase(base.PyCanliiBase):
 class Case(base.PyCanliiBase):
     """
     An object representing a CanLII Case
+
+    Attributes:
+        :content: A BeautifulSoup object representing the HTML content of this case
+        :caseId: A string representing the caseId of this case
+        :databaseId: A string representing the databaseId of this case
+        :title: A string representing the title of this case
+        :citation: A string representing the citation of this case
+        :url: A string representing the URL where this case can be found
+        :docketNumber: A string representing the docketNumber of this case
+         :startDate: A date object  date of this case
+
     """
 
     def __init__(self, data, apikey):
@@ -58,14 +67,11 @@ class Case(base.PyCanliiBase):
             language = enums.Language.fr
         base.PyCanliiBase.__init__(self, apikey, language)
         self.databaseId = data['databaseId']
-        # self.caseId = data['caseId'][self._lang.name]
         self.title = data['title']
         self.citation = data['citation']
 
         self._populated = False
         self._url = None
-        self._title = None
-        self._citation = None
         self._docketNumber = None
         self._decisionDate = None
 
@@ -74,27 +80,19 @@ class Case(base.PyCanliiBase):
 
 
     def _populate(self):
-        case = self._request("http://api.canlii.org/v1/caseBrowse", True, self.databaseId, self.caseId)
-        case = case.json()
-        self._url = case['url']
-        self._title = case['title']
-        self._citation = case['citation']
-        self._docketNumber = case['docketNumber']
-        self._decisionDate = case['decisionDate']
-
-        self._populated = True
-
-    def getContent(self):
-        """
-        Returns the HTML content of the case
-
-        :return: Returns a BeautifulSoup object representing the HTML content of the case
-        """
         if not self._populated:
-            self._populate()
+            case = self._request("http://api.canlii.org/v1/caseBrowse", True, self.databaseId, self.caseId)
+            case = case.json()
+            self._url = case['url']
+            self._docketNumber = case['docketNumber']
+            self._decisionDate = self._getDate(case['decisionDate'])
 
+            self._populated = True
+
+    @property
+    def content(self):
         if not self._content:
-            req = requests.get(self._url)
+            req = requests.get(self.url)
             self._content = BeautifulSoup(req.content)
 
         return self._content
@@ -156,3 +154,18 @@ class Case(base.PyCanliiBase):
             return l
         else:
             return None
+
+    @property
+    def url(self):
+        self._populate()
+        return self._url
+
+    @property
+    def docketNumber(self):
+        self._populate()
+        return self._docketNumber
+
+    @property
+    def decisionDate(self):
+        self._populate()
+        return self._decisionDate
