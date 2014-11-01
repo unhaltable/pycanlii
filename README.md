@@ -32,7 +32,7 @@ Component | Status
 legislationBrowse | Working
 caseBrowse | Working
 Search | Working
-caseCitatorTease| NYI
+caseCitatorTease| Working
 
 
 [travis-badge]:      http://img.shields.io/travis/sherlocke/pycanlii.svg?style=flat

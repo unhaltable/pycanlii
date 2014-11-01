@@ -26,7 +26,13 @@ class PyCanliiBase(object):
         for var in url_variables:
             url += "/" + var
 
+        result = None
         if len(query_parameters):
-            return requests.get(url, params=query_parameters)
+            result = requests.get(url, params=query_parameters)
         else:
-            return requests.get(url)
+            result = requests.get(url)
+
+        if result.status_code == requests.codes.ok:
+            return result
+        else:
+            raise Exception("Status code not okay, responded with response code " + str(result.status_code))
