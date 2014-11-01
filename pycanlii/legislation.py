@@ -22,7 +22,7 @@ class LegislationDatabase(base.PyCanliiBase):
 
         self.id = data["databaseId"]
         # still need to add jurisdiction although for basic functionality, strictly speaking, not required
-        self.jurisdiction = enums.LegislationJurisdiction[data['jurisdiction']]
+        self.jurisdiction = enums.Jurisdiction[data['jurisdiction']]
         self.legislation = []
         self._populated = False
 

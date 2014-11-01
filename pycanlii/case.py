@@ -6,22 +6,27 @@ from bs4 import BeautifulSoup
 class CaseDatabase(base.PyCanliiBase):
     """
     A database of CanLII Cases. This object is both indexable and iterable.
+
+    Attributes:
+        :name: A string representing the name of this CaseDatabase
+        :id: A string representing the ID of this caseDatabase
+        :jurisdiction: A Jurisdiction enum instance representing the Jurisdiction of this case
     """
 
     def __init__(self, data, apikey, language=enums.Language.en):
         base.PyCanliiBase.__init__(self, apikey, language)
         self.name = data['name']
         self.id = data["databaseId"]
-        self.jurisdiction = enums.LegislationJurisdiction[data['jurisdiction']]
+        self.jurisdiction = enums.Jurisdiction[data['jurisdiction']]
         self._cases = []
-        self.index = 0
+        self._index = 0
         self._full = False
 
     def _getCases(self, extension=10000):
         cases = self._request("http://api.canlii.org/v1/caseBrowse", True, self.id,
-                              offset=self.index, resultCount=extension).json()['cases']
+                              offset=self._index, resultCount=extension).json()['cases']
 
-        self.index += extension
+        self._index += extension
         if (len(cases) < extension):
             self._full = False
 
@@ -35,7 +40,7 @@ class CaseDatabase(base.PyCanliiBase):
         return self._cases.__iter__()
 
     def __getitem__(self, item):
-        while(self.index <= item):
+        while(self._index <= item):
             self._getCases()
         return self._cases[item]
 

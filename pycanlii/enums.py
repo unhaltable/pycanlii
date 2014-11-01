@@ -5,7 +5,7 @@ class LegislationType(Enum):
     Statute = 1
 
 
-class LegislationJurisdiction(Enum):
+class Jurisdiction(Enum):
     ca = 0
     ab = 1
     mb = 2

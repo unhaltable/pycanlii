@@ -6,7 +6,7 @@ class TestEnums(object):
     #This probably seems redundant, it's just to check if it works on all versions of python
     def test_enums(self):
         #Tests if the enum will run at all
-        assert enums.LegislationJurisdiction.ca == enums.LegislationJurisdiction.ca
+        assert enums.Jurisdiction.ca == enums.Jurisdiction.ca
 
         #Tests if you can get the name of the enum
         assert enums.Language.en.name == 'en'
