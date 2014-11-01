@@ -5,7 +5,11 @@ from bs4 import BeautifulSoup
 
 class CaseDatabase(base.PyCanliiBase):
     """
-    A database of CanLII Cases. This object is both indexable and iterable.
+    A database of CanLII Cases. This object is both indexable and iterable. These are both abstractions of the API.
+    The API allows a maximum of 10000 cases at a time, so when populating the database it will grab all of the cases
+    for you. If you are doing a loop or indexing very far into a CaseDatabase that is very large, be wary of 403 response codes,
+    as by default you're limited to 10 requests per second by the CanLII API. When a 403 response code is received an
+    HTTPError will be raised.
 
     Attributes:
         :name: A string representing the name of this CaseDatabase
@@ -26,23 +30,30 @@ class CaseDatabase(base.PyCanliiBase):
         cases = self._request("http://api.canlii.org/v1/caseBrowse", True, self.id,
                               offset=self._index, resultCount=extension).json()['cases']
 
-        self._index += extension
+        self._index += len(cases)
         if (len(cases) < extension):
-            self._full = False
+            self._full = True
 
         for case in cases:
             self._cases.append(Case(case, self._key))
 
 
     def __iter__(self):
+        i = 0
         while(not self._full):
             self._getCases()
-        return self._cases.__iter__()
+            while i < self._index:
+                yield self._cases[i]
+                i += 1
 
     def __getitem__(self, item):
+        i = 0
         while(self._index <= item):
             self._getCases()
-        return self._cases[item]
+            while (i < self._index):
+                yield self._cases[i]
+
+
 
 class Case(base.PyCanliiBase):
     """
@@ -56,8 +67,7 @@ class Case(base.PyCanliiBase):
         :citation: A string representing the citation of this case
         :url: A string representing the URL where this case can be found
         :docketNumber: A string representing the docketNumber of this case
-         :startDate: A date object  date of this case
-
+        :startDate: A date object  date of this case
     """
 
     def __init__(self, data, apikey):
@@ -83,7 +93,6 @@ class Case(base.PyCanliiBase):
         # Used to store the content of the case
         self._content = None
 
-
     def _populate(self):
         if not self._populated:
             case = self._request("http://api.canlii.org/v1/caseBrowse", True, self.databaseId, self.caseId)
@@ -98,7 +107,7 @@ class Case(base.PyCanliiBase):
     def content(self):
         if not self._content:
             req = requests.get(self.url)
-            self._content = BeautifulSoup(req.content)
+            self._content = req.content
 
         return self._content
 
@@ -119,8 +128,6 @@ class Case(base.PyCanliiBase):
             return l
         else:
             return None
-
-
 
     def citingCases(self):
         """

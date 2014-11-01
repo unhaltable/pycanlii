@@ -6,5 +6,5 @@ setup(
     packages = ["pycanlii"],
     version = "0.9.0",
     author = "Jonathan Webb",
-    install_requires=["beautifulsoup4", "requests"]
+    install_requires=["requests"]
     )

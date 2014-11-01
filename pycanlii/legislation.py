@@ -114,7 +114,7 @@ class Legislation(base.PyCanliiBase):
     def content(self):
         if not self._content:
             req = requests.get(self.url)
-            self._content = BeautifulSoup(req.content)
+            self._content = req.content
 
         return self._content
 
