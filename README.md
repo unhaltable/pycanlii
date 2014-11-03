@@ -33,7 +33,7 @@ case = cases[5][4]
 print(case.content)
 
 # Search CanLII for a specfic case
-case = canlii.search("Haldimand War Memorial Hospital v Grand River Valley Health Care", 1)[0]
+case = canlii.search("Haldimand War Memorial Hospital", 1)[0]
 
 # Get a list of the cases cited
 cited_cases = case.citedCases()
