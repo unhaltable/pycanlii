@@ -31,6 +31,16 @@ case = cases[5][4]
 
 # Print the HTML content of that case
 print(case.content)
+
+# Search CanLII for a specfic case
+case = canlii.search("Haldimand War Memorial Hospital v Grand River Valley Health Care", 1)[0]
+
+# Get a list of the cases cited
+cited_cases = case.citedCases()
+
+# Print out the names of those cases
+for case in cited_cases:
+    print(case.title)
 ```
 
 
