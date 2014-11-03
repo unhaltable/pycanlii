@@ -35,7 +35,8 @@ class LegislationDatabase(base.PyCanliiBase):
         self._populated = False
 
     def _getLegislation(self):
-        legis = self._request("http://api.canlii.org/v1/legislationBrowse", True, self.id).json()['legislations']
+        legis = self._request("http://api.canlii.org/v1/legislationBrowse",
+                              True, self.id).json()['legislations']
         for legislation in legis:
             self._legislation.append(Legislation(legislation, self._key, self._lang))
 
@@ -96,7 +97,8 @@ class Legislation(base.PyCanliiBase):
 
     def _populate(self):
         if not self._populated:
-            legis = self._request("http://api.canlii.org/v1/legislationBrowse", True, self.databaseId, self.legislationId)
+            legis = self._request("http://api.canlii.org/v1/legislationBrowse",
+                                  True, self.databaseId, self.legislationId)
             legis = legis.json()
             self._url = legis['url']
             self._dateScheme = enums.DateScheme[legis['dateScheme']]
