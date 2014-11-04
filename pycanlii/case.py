@@ -47,7 +47,7 @@ class CaseDatabase(base.PyCanliiBase):
 
     def __getitem__(self, item):
         while(self._index <= item):
-            self._getCases()
+            self._getCases(extension=item+1)
         return self._cases[item]
 
 
