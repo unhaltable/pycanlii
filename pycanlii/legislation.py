@@ -1,7 +1,6 @@
 import pycanlii.pycanliibase as base
 import pycanlii.enums as enums
 import requests
-from bs4 import BeautifulSoup
 
 class LegislationDatabase(base.PyCanliiBase):
     """
