@@ -23,17 +23,6 @@ databases = canlii.legislation_databases()
 cases = canlii.cases_databases()
 ```
 
-## Development Progress
-
-
-
-Component | Status
-----------|--------
-legislationBrowse | Working
-caseBrowse | Working
-Search | Working
-caseCitatorTease| Working
-
 
 [travis-badge]:      http://img.shields.io/travis/sherlocke/pycanlii.svg?style=flat
 [travis]:            https://travis-ci.org/sherlocke/pycanlii
