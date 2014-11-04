@@ -50,8 +50,7 @@ class CaseDatabase(base.PyCanliiBase):
         i = 0
         while(self._index <= item):
             self._getCases()
-            while (i < self._index):
-                yield self._cases[i]
+        return self._cases[i]
 
 
 
